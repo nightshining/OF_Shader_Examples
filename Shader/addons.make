@@ -1,4 +1,0 @@
-ofxGui
-ofxXmlSettings
-ofxControlUtils
-ofxISF
