@@ -12,11 +12,10 @@ void ofApp::setup() {
     vid.setLoopState(OF_LOOP_NORMAL);
     vid.play();
     
-    //Set up your shader effect chain//
-    effect.chainEffect(SHADER_CONVERGE);
-    effect.chainEffect(SHADER_CHROMA_ZOOM);
-    effect.chainEffect(SHADER_BLUR);
-    effect.chainEffect(SHADER_WAVES);
+//    //Set up your shader effect chain//
+
+    effect.chainEffect(SHADER_SHAKE);
+    effect.chainEffect(SHADER_VHS);
     
     effect.setup(vid.getWidth(), vid.getHeight(), vid.getTextureReference());
     
@@ -32,8 +31,8 @@ void ofApp::update() {
     float interact1 = ofMap(ofGetMouseX(), 0, ofGetWidth(), 0.0, 1.0);
     float interact2 = ofMap(ofGetMouseY(), 0, ofGetHeight(), 0.0, 1.0);
 
-    effect.setChromaZoom(0.5, interact1, 0.2, interact2, ofVec2f(0.5, 0.5));
-    effect.setWaves(interact1, interact2, 0.1);
+    effect.setShake(interact1, interact2, 0.1);
+    effect.setVHS(true, 0.0, 0.3, 1.0, 1.0, 0.2, false, interact1, interact2, 0.4);
 
 }
 

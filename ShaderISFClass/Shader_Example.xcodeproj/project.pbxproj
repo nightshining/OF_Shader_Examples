@@ -97,6 +97,7 @@
 		48488C30B00CB661FCF994D8 /* Constants.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Constants.h; path = ../../../addons/ofxISF/src/ofxISF/Constants.h; sourceTree = SOURCE_ROOT; };
 		50DF87D612C5AAE17AAFA6C0 /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxXmlSettings.cpp; path = ../../../addons/ofxXmlSettings/src/ofxXmlSettings.cpp; sourceTree = SOURCE_ROOT; };
 		52AFA1F08C420992CAAAE648 /* ofxSlider.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSlider.h; path = ../../../addons/ofxGui/src/ofxSlider.h; sourceTree = SOURCE_ROOT; };
+		5DA9D8D21C62993200349FDC /* VHS Glitch.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = "VHS Glitch.fs"; sourceTree = "<group>"; };
 		5DE8D8251C5A91BC009E5CD7 /* Bad TV.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = "Bad TV.fs"; sourceTree = "<group>"; };
 		5DE8D8261C5A91BC009E5CD7 /* Bad TV.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = "Bad TV.vs"; sourceTree = "<group>"; };
 		5DE8D8271C5A91BC009E5CD7 /* CubicLensDistortion.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = CubicLensDistortion.fs; sourceTree = "<group>"; };
@@ -260,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				5DE8D8991C5AD093009E5CD7 /* Zoom.fs */,
+				5DA9D8D21C62993200349FDC /* VHS Glitch.fs */,
 				5DE8D8271C5A91BC009E5CD7 /* CubicLensDistortion.fs */,
 				5DE8D8301C5A92AC009E5CD7 /* Twirl.fs */,
 				5DE8D8951C5ACE88009E5CD7 /* Pixel Shifter.fs */,

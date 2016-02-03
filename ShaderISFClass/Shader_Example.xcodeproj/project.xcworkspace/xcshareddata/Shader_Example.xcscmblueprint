@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "113AC6F626EB0BBB67277825EC4B997814A1DBF0",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "97FDCF03A971289FFED99A88138A5909EA5F5D0C" : 0,
+    "6B5D1DE462D521A98972DF70F1147E20268C546A" : 0,
+    "113AC6F626EB0BBB67277825EC4B997814A1DBF0" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "AA8115C0-E50E-45BF-AAF0-2B3A2A56B3DD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "97FDCF03A971289FFED99A88138A5909EA5F5D0C" : "..\/addons\/ofxISF",
+    "6B5D1DE462D521A98972DF70F1147E20268C546A" : "..\/addons\/ofxTween",
+    "113AC6F626EB0BBB67277825EC4B997814A1DBF0" : "OF_Shader_Examples\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Shader_Example",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ShaderISFClass\/Shader_Example.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/nightshining\/OF_Shader_Examples.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "113AC6F626EB0BBB67277825EC4B997814A1DBF0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/arturoc\/ofxTween.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6B5D1DE462D521A98972DF70F1147E20268C546A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/satoruhiga\/ofxISF.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "97FDCF03A971289FFED99A88138A5909EA5F5D0C"
+    }
+  ]
+}

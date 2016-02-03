@@ -15,17 +15,34 @@ Shader::Shader() {
     shaderConvergePass = false;
     shaderGlitchPass = false;
     shaderBlurPass = false;
+    shaderVHSPass = false;
     
     loadWarning = "Corresponding Shader was never loaded!";
     paraIndexWarning = "This parameter index is out of range";
+    
+    //Setting up TV Distortion //
     
     int distTVParamTotal = 8;
     distTVParams.resize(distTVParamTotal);
     distTVNames.resize(distTVParamTotal);
     
+    //Setting up ChromaZoom//
+    
     int chromaParamTotal = 4;
     chromaNames.resize(chromaParamTotal);
     chromaParams.resize(chromaParamTotal);
+    
+    //Setting up VHS Distortian//
+    
+    int distVHSParamTotal = 8;
+    shaderVHS_params.resize(distVHSParamTotal);
+    
+    int distVHSColorTotal = 3;
+    shaderVHS_colors.resize(distVHSParamTotal);
+    
+    int distVHSNameTotal = 10;
+    vhsNames.resize(distVHSNameTotal);
+    
     
 }
 
@@ -117,7 +134,7 @@ void Shader::chainEffect(effectType load) {
         case SHADER_GLITCH_SHIFT:
             shaderGlitchPass = true;
             filePaths.push_back("shaders/Glitch Shifter.fs");
-            ofLog(OF_LOG_NOTICE, "Access  SHADER_GLITCHSHIFT void setGlitchShift(float size, float horizontal, float vertical)");
+            ofLog(OF_LOG_NOTICE, "Access SHADER_GLITCHSHIFT void setGlitchShift(float size, float horizontal, float vertical)");
             break;
         case SHADER_BLUR:
             shaderBlurPass = true;
@@ -125,16 +142,22 @@ void Shader::chainEffect(effectType load) {
             ofLog(OF_LOG_NOTICE, "Access SHADER_BLUR void setBlur(float amt);");
             break;
         case SHADER_PIXEL_SHIFTER:
-            filePaths.push_back("shaders/Pixel Shifter.fs");
+            filePaths.push_back("shaders/Pixel Shifter.fs"); //finish
             break;
         case SHADER_ZOOM_ISF:
-            filePaths.push_back("shaders/zoom.fs");
+            filePaths.push_back("shaders/zoom.fs"); //finish
             break;
         case SHADER_ROTATE_ISF:
-            filePaths.push_back("shaders/3d Rotate.fs/3d Rotate.fs");
+            filePaths.push_back("shaders/3d Rotate.fs/3d Rotate.fs"); //finish
             break;
+        case SHADER_VHS:
+            shaderVHSPass = true;
+            filePaths.push_back("shaders/VHS Glitch.fs");
+            ofLog(OF_LOG_NOTICE, "Access SHADER_VHS void setVHS(float amt)");
+            break;
+
         default:
-            ofLog(OF_LOG_WARNING, "Not an EffectType");
+            ofLog(OF_LOG_WARNING, "Not recognized as an EffectType (example: SHADER_BLUR)");
             break;
     }
     
@@ -791,7 +814,72 @@ float Shader::getBlurParam(int parameterIndex) {
         ofLog(OF_LOG_NOTICE, loadWarning);
         
     }
+
+}
+
+
+void Shader::setVHS( bool autoScan, float xScanLine, float yScanLine, float xScanLineSize, float yScanLineAmt, float grainLevel, bool scanFollow, float analogDist, float bleed, float bleedRange) {
     
+    if (shaderVHSPass) {
+        
+        string paramFileName = "VHS Glitch";
+        
+        vhsNames[0] = "autoScan";
+        vhsNames[1] = "xScanline";
+        vhsNames[2] = "yScanline";
+        vhsNames[3] = "xScanlineSize";
+        vhsNames[4] = "yScanlineAmount";
+        vhsNames[5] = "grainLevel";
+        vhsNames[6] = "scanFollow";
+        vhsNames[7] = "analogDistort";
+        vhsNames[8] = "bleedAmount";
+        vhsNames[9] = "bleedRange";
+        
+        
+        scanToggle = autoScan;
+        chain.getShader(paramFileName)->setUniform<bool>(vhsNames[0], scanToggle);
+        
+        shaderVHS_params[1] = xScanLine;
+        shaderVHS_params[2] = yScanLine;
+        shaderVHS_params[3] = xScanLineSize;
+        shaderVHS_params[4] = ofMap(yScanLineAmt, 0.0, 1.0, -1.0, 1.0, true);
+        shaderVHS_params[5] = ofMap(grainLevel, 0.0, 1.0, 0.0, 3.0, true);
+        
+        for (int i = 1; i < 6; i++) {
+            
+            chain.getShader(paramFileName)->setUniform<float>(vhsNames[i], shaderVHS_params[i]);
+            
+        }
+        
+        scanFollowToggle = scanFollow;
+        chain.getShader(paramFileName)->setUniform<bool>(vhsNames[6], scanFollowToggle);
+        
+        shaderVHS_params[6] = ofMap(analogDist, 0.0, 1.0, 0.0, 10.0, true);
+        shaderVHS_params[7] = ofMap(bleed, 0.0, 1.0, 0.0, 5.0, true);
+        shaderVHS_params[8] = ofMap(bleedRange, 0.0, 1.0, 0.0, 2.0, true);
+        
+        for (int i = 7; i < 10; i++) {
+            
+            chain.getShader(paramFileName)->setUniform<float>(vhsNames[i], shaderVHS_params[i - 1]);
+
+        }
+
+        //Note: couldn't figure out why the ISF type Color doesn't match a ofVec4f//
+//        shaderVHS_colors[0] = colorBleedL;
+//        shaderVHS_colors[1] = colorBleedC;
+//        shaderVHS_colors[2] = colorBleedR;
+//        
+//        
+//        chain.getShader(paramFileName)->setUniform<ofVec4f>(vhsNames[10], shaderVHS_colors[0]);
+//        chain.getShader(paramFileName)->setUniform<ofVec4f>(vhsNames[11], shaderVHS_colors[1]);
+//        chain.getShader(paramFileName)->setUniform<ofVec4f>(vhsNames[12], shaderVHS_colors[2]);
+//        
+        
+    } else {
+        
+        ofLog(OF_LOG_WARNING, loadWarning);
+        
+    }
 }
 
 

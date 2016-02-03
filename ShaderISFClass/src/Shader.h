@@ -6,7 +6,7 @@
 #include "ofMain.h"
 #include "ofxISF.h"
 
-enum effectType { SHADER_BLUR_ZOOM, SHADER_LENS_DISTORT, SHADER_DOUBLE_IMAGE, SHADER_DISTORTED_TV, SHADER_WAVES, SHADER_TWIRL, SHADER_EXPOSURE, SHADER_COLOR_ADJUST, SHADER_CHROMA_ZOOM, SHADER_SHAKE, SHADER_CONVERGE, SHADER_GLITCH_SHIFT, SHADER_BLUR, SHADER_PIXEL_SHIFTER, SHADER_ZOOM_ISF, SHADER_ROTATE_ISF };
+enum effectType { SHADER_BLUR_ZOOM, SHADER_LENS_DISTORT, SHADER_DOUBLE_IMAGE, SHADER_DISTORTED_TV, SHADER_WAVES, SHADER_TWIRL, SHADER_EXPOSURE, SHADER_COLOR_ADJUST, SHADER_CHROMA_ZOOM, SHADER_SHAKE, SHADER_CONVERGE, SHADER_GLITCH_SHIFT, SHADER_BLUR, SHADER_PIXEL_SHIFTER, SHADER_ZOOM_ISF, SHADER_ROTATE_ISF, SHADER_VHS };
 
 class Shader {
     
@@ -36,6 +36,7 @@ public:
     void setGlitchShift(float size, float horizontal, float vertical, ofVec2f offset);
     
     void setBlur(float amt);
+    void setVHS( bool autoScan, float xScanLine, float yScanLine, float xScanLineSize, float yScanLineAmt, float grainLevel, bool scanFollow, float analogDist, float bleed, float bleedRange);
     
     void setPixelShifter(float amt);
     void setZoom(float amt);
@@ -56,7 +57,7 @@ public:
     float getConvergeParam(int parameterIndex);
     float getGlitchShift(int parameterIndex);
     float getBlurParam(int parameterIndex);
-    
+    float getVHSParam(int parameterIndex);
     
 private:
     
@@ -119,13 +120,123 @@ private:
     float glitchSize, glitchHorz, glitchVert;
     ofVec2f glitchOffset;
     
+    //SHADER_VHS//
+    bool shaderVHSPass;
+    
     
     //SHADER_BLUR//
     bool shaderBlurPass;
     float blurAmt;
+    bool scanToggle, scanFollowToggle;
+    
+    vector<float> shaderVHS_params;
+    vector<ofVec4f> shaderVHS_colors;
+    vector<string> vhsNames;
     
 
 };
+
+
+
+//{
+//    "NAME": "autoScan",
+//    "TYPE": "bool",
+//    "DEFAULT": 1.0
+//},
+//{
+//    "NAME": "xScanline",
+//    "TYPE": "float",
+//    "DEFAULT": 0.5,
+//    "MIN": 0.0,
+//    "MAX": 1.0
+//},
+//{
+//    "NAME": "yScanline",
+//    "TYPE": "float",
+//    "DEFAULT": 0.0,
+//    "MIN": 0.0,
+//    "MAX": 1.0
+//},
+//{
+//    "NAME": "xScanlineSize",
+//    "TYPE": "float",
+//    "DEFAULT": 0.25,
+//    "MIN": 0.0,
+//    "MAX": 1.0
+//},
+//{
+//    "NAME": "yScanlineAmount",
+//    "TYPE": "float",
+//    "DEFAULT": 0.25,
+//    "MIN": -1.0,
+//    "MAX": 1.0
+//},
+//{
+//    "NAME": "grainLevel",
+//    "TYPE": "float",
+//    "DEFAULT": 0.0,
+//    "MIN": 0.0,
+//    "MAX": 3.0
+//},
+//{
+//    "NAME": "scanFollow",
+//    "TYPE": "bool",
+//    "DEFAULT": 1.0
+//},
+//{
+//    "NAME": "analogDistort",
+//    "TYPE": "float",
+//    "DEFAULT": 1.0,
+//    "MIN": 0.0,
+//    "MAX": 10.0
+//},
+//{
+//    "NAME": "bleedAmount",
+//    "TYPE": "float",
+//    "DEFAULT": 1.0,
+//    "MIN": 0.0,
+//    "MAX": 5.0
+//},
+//{
+//    "NAME": "bleedRange",
+//    "TYPE": "float",
+//    "DEFAULT": 1.0,
+//    "MIN": 0.0,
+//    "MAX": 2.0
+//},
+//{
+//    "NAME": "colorBleedL",
+//    "TYPE": "color",
+//    "DEFAULT": [
+//                0.8,
+//                0.0,
+//                0.2,
+//                1.0
+//                ]
+//},
+//{
+//    "NAME": "colorBleedC",
+//    "TYPE": "color",
+//    "DEFAULT": [
+//                1.0,
+//                0.0,
+//                0.0,
+//                1.0
+//                ]
+//},
+//{
+//    "NAME": "colorBleedR",
+//    "TYPE": "color",
+//    "DEFAULT": [
+//                0.8,
+//                0.2,
+//                0.0,
+//                1.0
+//                ]
+//}
+//]
+//
+//
 
 
 
