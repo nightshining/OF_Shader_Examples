@@ -4,6 +4,7 @@
 //--------------------------------------------------------------
 void ofApp::setup() {
     
+    
 
     ofSetWindowTitle("Shader Effects Example");
     ofBackground(ofColor::white);

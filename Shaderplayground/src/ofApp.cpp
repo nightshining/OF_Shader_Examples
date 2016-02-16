@@ -15,6 +15,7 @@ void ofApp::setup(){
     shaderNames.push_back("water");
     shaderNames.push_back("noise");
     shaderNames.push_back("ripple");
+    shaderNames.push_back("rgb");
     
     shadertoy.load("shaders/" + shaderNames[counter]);
     

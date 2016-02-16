@@ -76,6 +76,8 @@
 		5D78B99E1C5D16B600207F97 /* ink.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = ink.frag; sourceTree = "<group>"; };
 		5D78B99F1C5D16B600207F97 /* ink.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = ink.vert; sourceTree = "<group>"; };
 		5D78B9A11C5D16B600207F97 /* earth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = earth.jpg; sourceTree = "<group>"; };
+		5DB3226E1C73B87C0039573B /* rgb.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgb.frag; sourceTree = "<group>"; };
+		5DB3226F1C73B87C0039573B /* rgb.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgb.vert; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -131,6 +133,8 @@
 		5D78B99D1C5D16B600207F97 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				5DB3226E1C73B87C0039573B /* rgb.frag */,
+				5DB3226F1C73B87C0039573B /* rgb.vert */,
 				5D33CC7F1C5D3154006E6DE1 /* ripple.frag */,
 				5D33CC801C5D3154006E6DE1 /* ripple.vert */,
 				5D33CC7D1C5D2CB5006E6DE1 /* noise.frag */,
